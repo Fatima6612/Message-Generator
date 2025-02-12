@@ -84,9 +84,23 @@
             "I love you baby"
         ];
 
+        let remainingMessages = [...messages];
+
         function showMessage() {
-            const randomIndex = Math.floor(Math.random() * messages.length);
-            document.getElementById('message').textContent = messages[randomIndex];
+            if (remainingMessages.length === 0) {
+                // All messages have been shown, reset the array
+                remainingMessages = [...messages];
+            }
+            
+            // Get random index from remaining messages
+            const randomIndex = Math.floor(Math.random() * remainingMessages.length);
+            
+            // Get the message and remove it from remaining messages
+            const message = remainingMessages[randomIndex];
+            remainingMessages.splice(randomIndex, 1);
+            
+            // Display the message
+            document.getElementById('message').textContent = message;
         }
     </script>
 </body>
